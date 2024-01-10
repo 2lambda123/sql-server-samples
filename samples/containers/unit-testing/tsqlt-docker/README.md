@@ -151,7 +151,7 @@ The AdventureWorks database recovery can be performed using the following docker
 
 **4. Installation of the tSQLt framework**
 
-The installation of the latest version of tSQLt framework in the AdventureWorks database is done using the GitHub Actions tSQLt Installer published by [lowlydba](https://github.com/lowlydba), you can find more details [here](https://github.com/lowlydba/tsqlt-installer) and on the [GitHub Actions marketplace](https://github.com/marketplace/actions/tsqlt-installer).
+The installation of the latest version of tSQLt framework in the AdventureWorks database is done using the GitHub Actions tSQLt Installer published by [lowlydba](https://github.com/lowlydba), you can find more details [here](https://github.com/lowlydba/tsqlt-installer) and on the [GitHub Actions marketplace](https://github.com/marketplace/actions/tsqlt-installer). This installation includes failsafe features to handle common installation issues.
 
 The snippet of YAML code used for the installation of the tSQLt framework in the AdventureWorks database is the following.
 
@@ -159,7 +159,15 @@ The snippet of YAML code used for the installation of the tSQLt framework in the
 steps:
   - uses: actions/checkout@v2
   - name: Install tSQLt with SQL auth on AdventureWorks2017
+    name: Install tSQLt framework in the AdventureWorks database
     uses: lowlydba/tsqlt-installer@v1
+    with:
+      sql-instance: localhost
+      database: AdventureWorks2017
+      version: latest
+      user: sa
+      password: 3uuiCaKxfbForrK
+      failsafe: true
     with:
       sql-instance: localhost
       database: AdventureWorks2017
