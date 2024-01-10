@@ -21,12 +21,12 @@ jobs:
     
     services:
       sqlserver:
-        image: chriseaton/adventureworks:latest
+        image: chriseaton/adventure-works:latest
         ports:
           - 1433:1433
         env:
           ACCEPT_EULA: Y
-          SA_PASSWORD: 3uuiCaKxfbForrK
+          SA_PASSWORD: ${{ secrets.SA_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v2
@@ -63,7 +63,7 @@ jobs:
       #  run: env        
 
       - name: Restore AdventureWorks2017
-        run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -Q "RESTORE DATABASE [AdventureWorks2017] FROM DISK = '/adventureworks.bak' WITH MOVE 'AdventureWorks2017' TO '/var/opt/mssql/data/AdventureWorks.mdf', MOVE 'AdventureWorks2017_log' TO '/var/opt/mssql/data/AdventureWorks_log.ldf'"
+        run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "$SA_PASSWORD" -Q "RESTORE DATABASE [AdventureWorks2017] FROM DISK = '/adventureworks.bak' WITH MOVE 'AdventureWorks2017' TO '/var/opt/mssql/data/AdventureWorks.mdf', MOVE 'AdventureWorks2017_log' TO '/var/opt/mssql/data/AdventureWorks_log.ldf'"
 
       - name: Get the database list
         run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -Q "SELECT Name FROM sys.databases"
@@ -71,8 +71,8 @@ jobs:
       - name: Install tSQLt with SQL auth on AdventureWorks2017
         uses: lowlydba/tsqlt-installer@v1
         with:
-          sql-instance: localhost
-          database: AdventureWorks2017
+          sql-instance: ${{ secrets.SQL_INSTANCE }}
+          database: ${{ secrets.DATABASE }}
           version: latest
           user: sa
           password: 3uuiCaKxfbForrK        
