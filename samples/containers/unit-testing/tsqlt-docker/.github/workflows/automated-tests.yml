@@ -40,7 +40,7 @@ jobs:
         with:
           sql-instance: localhost
           database: tempdb
-          version: latest
+          installed-version: latest
           user: sa
           password: 3uuiCaKxfbForrK
         
