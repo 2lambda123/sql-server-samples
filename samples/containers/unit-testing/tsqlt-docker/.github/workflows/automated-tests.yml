@@ -7,9 +7,9 @@ on:
   # Please refer to the README.md file for detailed instructions on configuring the tSQLt installation based on the project requirements
   # Triggers the workflow based on the project requirements for branch protection
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
