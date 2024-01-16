@@ -4,7 +4,8 @@ name: tSQLt installer and unit testing runner
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
+  # Please refer to the README.md file for detailed instructions on configuring the activation events and branches based on the project requirements
+  # Triggers the workflow based on the project requirements for branch protection
   push:
     branches: [ "master" ]
   pull_request:
