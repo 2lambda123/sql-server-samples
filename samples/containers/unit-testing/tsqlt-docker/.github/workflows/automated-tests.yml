@@ -4,7 +4,7 @@ name: tSQLt installer and unit testing runner
 
 # Controls when the workflow will run
 on:
-  # Please refer to the README.md file for detailed instructions on configuring the activation events and branches based on the project requirements
+  # Please refer to the README.md file for detailed instructions on configuring the tSQLt installation based on the project requirements
   # Triggers the workflow based on the project requirements for branch protection
   push:
     branches: [ "master" ]
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install tSQLt with SQL auth on tempdb
-        uses: lowlydba/tsqlt-installer@v1
+            uses: lowlydba/tsqlt-installer@v1
         with:
           sql-instance: localhost
           database: tempdb
