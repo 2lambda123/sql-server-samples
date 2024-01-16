@@ -77,7 +77,7 @@ jobs:
         with:
           sql-instance: localhost
           database: AdventureWorks2017
-          version: latest
+          installed-version: latest
           user: sa
           password: 3uuiCaKxfbForrK        
         
