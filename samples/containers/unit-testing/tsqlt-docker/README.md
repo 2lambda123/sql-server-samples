@@ -225,11 +225,17 @@ The repeatability of the tests provides the ability to automate them, an essenti
 
 ## Disclaimers
 
-The code included in this sample is not intended to be a set of best practices on how to build scalable enterprise grade unit testing or CI/CD system. This is beyond the scope of this quick start sample.
+The code included in this sample demonstrates an example of how to automate the testing of SQL Server objects using tSQLt, Docker, and GitHub Actions. However, it is important to note that this sample is not intended to be used as a blueprint for building scalable enterprise-grade unit testing or CI/CD systems.
 
 <a name=related-links></a>
 
-## Related Links
+#[Related Links](#related-links)<br/>
+
+For more information, see these articles:
+- [tSQLt Framework Documentation](https://tsqlt.org/)
+- [Docker](https://www.docker.com/)
+- [GitHub Actions](https://github.com/features/actions/)
+- [Automating the Testing of SQL Server Objects with tSQLt, Docker, and GitHub Actions](https://segovoni.medium.com/automating-the-testing-of-sql-server-objects-with-tsqlt-docker-and-github-actions)
 <!-- Links to more articles. Remember to delete "en-us" from the link path. -->
 
 For more information, see these articles:
