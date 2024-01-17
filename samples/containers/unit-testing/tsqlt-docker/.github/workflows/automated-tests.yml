@@ -4,11 +4,12 @@ name: tSQLt installer and unit testing runner
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
+  # Please refer to the README.md file for detailed instructions on configuring the tSQLt installation based on the project requirements
+  # Triggers the workflow based on the project requirements for branch protection
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,7 +22,7 @@ jobs:
     
     services:
       sqlserver:
-        image: chriseaton/adventureworks:latest
+        image: mcr.microsoft.com/mssql/server:2017-latest
         ports:
           - 1433:1433
         env:
@@ -32,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install tSQLt with SQL auth on tempdb
-        uses: lowlydba/tsqlt-installer@v1
+            uses: lowlydba/tsqlt-installer@v1
         with:
           sql-instance: localhost
           database: tempdb
@@ -63,7 +64,7 @@ jobs:
       #  run: env        
 
       - name: Restore AdventureWorks2017
-        run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -Q "RESTORE DATABASE [AdventureWorks2017] FROM DISK = '/adventureworks.bak' WITH MOVE 'AdventureWorks2017' TO '/var/opt/mssql/data/AdventureWorks.mdf', MOVE 'AdventureWorks2017_log' TO '/var/opt/mssql/data/AdventureWorks_log.ldf'"
+        run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -Q "RESTORE DATABASE [AdventureWorks2017] FROM DISK = '/path/to/adventureworks.bak' WITH MOVE 'AdventureWorks2017' TO '/var/opt/mssql/data/AdventureWorks.mdf', MOVE 'AdventureWorks2017_log' TO '/var/opt/mssql/data/AdventureWorks_log.ldf'"
 
       - name: Get the database list
         run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -Q "SELECT Name FROM sys.databases"
@@ -78,10 +79,10 @@ jobs:
           password: 3uuiCaKxfbForrK        
         
       - name: Create sp usp_Raiserror_SafetyStockLevel
-        run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -d AdventureWorks2017 -b < ./source/usp-raiserror-safetystocklevel.sql
+        run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -d AdventureWorks2017 -b < /path/to/usp-raiserror-safetystocklevel.sql
         
       - name: Create system under test (SUT) TR_Product_SafetyStockLevel
-        run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -d AdventureWorks2017 -b < ./source/tr-product-safetystocklevel.sql
+        run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -d AdventureWorks2017 -b < /path/to/tr-product-safetystocklevel.sql
         
       - name: Create test class UnitTestTRProductSafetyStockLevel
         run: docker exec -i $ENV_CONTAINER_ID /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "3uuiCaKxfbForrK" -d AdventureWorks2017 -b < ./unit-test/test-class-trproductsafetystocklevel.sql
