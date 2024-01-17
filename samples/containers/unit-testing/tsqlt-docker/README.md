@@ -61,7 +61,11 @@ The trigger we have wrote is to prevent the insertion of new products with value
 4. Copy the [automated-tests.yml](https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/unit-testing/tsqlt-docker/.github/workflows) inside the directory `.github/workflows` you created in the previous step in your repository. The `automated-tests.yml` describes the process that will execute one or more jobs
 5. Create the `source` and `unit-test` directories in the root of your sample repository
 6. Copy all the files located in the [source](https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/unit-testing/tsqlt-docker/source) and [unit-test](https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/unit-testing/tsqlt-docker/unit-test) directories to their respective directories in your repository
-7. View and run the workflow as described [here](https://docs.github.com/actions/quickstart)
+7. Create a `.github/workflows` directory in your GitHub repository if this directory does not already exist
+4. Copy the [automated-tests.yml](https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/unit-testing/tsqlt-docker/.github/workflows) file inside the directory `.github/workflows` you created in the previous step in your repository
+5. Create the `source` and `unit-test` directories in the root of your sample repository
+6. Copy all the files located in the [source](https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/unit-testing/tsqlt-docker/source) and [unit-test](https://github.com/microsoft/sql-server-samples/tree/master/samples/containers/unit-testing/tsqlt-docker/unit-test) directories to their respective directories in your repository
+8. View and run the workflow as described [here](https://docs.github.com/actions/quickstart)
 8. Have fun with the solution details outlined below
 
 **The challenge**
