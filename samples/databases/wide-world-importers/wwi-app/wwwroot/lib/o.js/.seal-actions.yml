@@ -1,0 +1,16 @@
+meta:
+  schema-version: 0.1.0
+  created-on: "2024-02-15T11:42:38Z"
+  cli-version: 0.2.0
+projects:
+  2lambda123-sql-server-samples-samples-databases-wide-world-importers-wwi-app-wwwroot-lib-o.js-package-lock.json:
+    targets:
+      - package.json
+    manager:
+      ecosystem: node
+      name: npm
+      version: "5"
+    overrides:
+      minimatch:
+        3.0.4:
+          use: 3.0.4-sp1
