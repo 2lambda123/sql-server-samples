@@ -1,0 +1,52 @@
+meta:
+  schema-version: 0.1.0
+  created-on: "2024-02-15T11:42:46Z"
+  cli-version: 0.2.0
+projects:
+  2lambda123-sql-server-samples-samples-databases-wide-world-importers-wwi-app-wwwroot-lib-webcomponentsjs-package-lock.json:
+    targets:
+      - package.json
+    manager:
+      ecosystem: node
+      name: npm
+      version: "5"
+    overrides:
+      glob-parent:
+        3.1.0:
+          use: 3.1.0-sp1
+      xmldom:
+        0.1.31:
+          use: 0.1.31-sp1-for-passport-saml
+      underscore:
+        1.6.0:
+          use: 1.6.0-sp1
+      tough-cookie:
+        2.5.0:
+          use: 2.5.0-sp1
+      got:
+        6.7.1:
+          use: 6.7.1-sp1
+      lodash.template:
+        4.5.0:
+          use: 4.5.0-sp1
+        3.6.2:
+          use: 3.6.2-sp1
+      semver:
+        5.4.1:
+          use: 5.4.1-sp1
+        6.3.0:
+          use: 6.3.0-sp1
+      minimist:
+        0.0.8:
+          use: 0.0.8-sp1
+        1.2.0:
+          use: 1.2.0-sp1
+      ansi-regex:
+        3.0.0:
+          use: 3.0.0-sp1
+      minimatch:
+        3.0.4:
+          use: 3.0.4-sp1
+      js-yaml:
+        3.10.0:
+          use: 3.10.0-sp1
